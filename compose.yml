@@ -12,8 +12,8 @@ services:
       - 8080:8080
     volumes:
       - ./:/var/www/html
-      - ./.docker/php.ini:/etc/php/8.4/fpm/conf.d/99-php.ini
-      - ./.docker/xdebug.ini:/etc/php/8.4/cli/conf.d/20-xdebug.ini
+      - ./.docker/php.ini:/usr/local/etc/php/conf.d/99-php.ini
+      - ./.docker/xdebug.ini:/usr/local/etc/php/conf.d/20-xdebug.ini
       - ./.docker/fpm-pool.conf:/usr/local/etc/php-fpm.conf
       - ~/.ssh:/home/laravel/.ssh
     cap_add:
