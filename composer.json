@@ -9,12 +9,14 @@
         "php": "^8.2",
         "laravel/framework": "^12.0",
         "laravel/horizon": "^5.43",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^3.6",
         "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.2.2",
-        "laravel/pint": "^1.24",
+        "laravel/pint": "^1.27",
         "laravel/sail": "^1.41",
         "laravel/telescope": "^5.16",
         "mockery/mockery": "^1.6",
@@ -67,11 +69,21 @@
         ],
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ],
+        "fix-style": "./vendor/bin/pint --parallel",
+        "model:docs": [
+          "@php artisan config:clear --ansi",
+          "@php artisan ide-helper:generate",
+          "@php artisan ide-helper:meta",
+          "@php artisan ide-helper:models -RW"
         ]
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "laravel/telescope",
+                "barryvdh/laravel-ide-helper"
+            ]
         }
     },
     "config": {
